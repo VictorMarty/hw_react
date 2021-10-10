@@ -1,0 +1,63 @@
+.MainPage {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.MainPage-container {
+  max-width: 884px;
+  width: 100%;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.MainPage--header {
+  flex: 0 1 auto;
+}
+
+.MainPage--main {
+  flex: 1 0 auto;
+}
+
+.MainPage--footer {
+  width: 100%;
+  flex: 0 1 auto;
+  display: flex;
+  justify-content: center;
+  background-color: #f0f2f3;
+}
+
+.MainPage--nosettings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.MainPage--history {
+}
+
+.Button.first-btn {
+  margin-right: 8px;
+}
+
+.mainDescription {
+  margin-top: 32px;
+  margin-bottom: 24px;
+  max-width: 264px;
+  text-align: center;
+}
+
+.MainIcon {
+  width: 124px;
+  height: 124px;
+}
+
+/* .MainPage-wrapper--footer .MainPage-wrapper {
+  max-width: 884px;
+  width: 100%;
+  padding: 0 20px;
+} */

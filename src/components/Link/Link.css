@@ -1,0 +1,23 @@
+:root {
+  --color: #7f8285;
+  --color-hover: #e00000;
+}
+
+.Link {
+  color: var(--color);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.06px;
+  text-align: left;
+}
+
+.Link:hover {
+  color: var(--color-hover);
+  cursor: pointer;
+}
+
+.Link:visited {
+  color: var(--color);
+}

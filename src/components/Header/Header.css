@@ -1,0 +1,25 @@
+:root {
+  --title-color: #7f8285;
+}
+.Header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Header-title {
+  font-family: 'YS Text';
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 28px;
+  letter-spacing: 0.25px;
+  text-align: left;
+  color: var(--title-color);
+  margin: 0;
+}
+
+.Header-buttons {
+  display: flex;
+}

@@ -1,0 +1,135 @@
+:root {
+  --Input-color: #000000;
+  --Input-font: 13px;
+
+  --label-lineHeight: 18px;
+  --label-color-required: #ff3333;
+  --textArea-height: 36px;
+  --textArea-indentAll: 10px 0 13pxx;
+  --textArea-bg-color: #ffffff;
+  --textArea-border-color: #d9d9d9;
+  --textArea-border-color-focused: #b3b3b3;
+  --textArea-lineHeight: 15px;
+  --textArea-borderRadius: 4px;
+  --textArea-bg-color: #cccccc;
+  --deleteButton-size: 16px;
+  --deleteButton-color-symbol: #ffffff;
+}
+
+.Input {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+.Input-label_required::after {
+  content: ' *';
+  color: red;
+}
+.Input--inline {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.Input-label {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 6px;
+  line-height: var(--label-lineHeight);
+  text-align: left;
+  font-size: var(--Input-font);
+  color: var(--label-color);
+}
+
+.Input--inline .Input-label {
+  font-family: 'YS Text';
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.059999991208314896px;
+  text-align: left;
+
+  margin-bottom: 0;
+  margin-right: 8px;
+}
+
+.Input-required-symbol {
+  color: var(--label-color-required);
+}
+
+.Input-textArea {
+  box-sizing: border-box;
+  height: var(--textArea-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* padding: var(--textArea-indentAll); */
+  border: 2px solid var(--textArea-border-color);
+  width: 100%;
+  margin: 0;
+  border-radius: 4px;
+}
+
+.Input--inline .Input-textArea {
+  width: 52px;
+  text-align: end;
+}
+
+.Input-text {
+  font-family: 'YS Text', 'Arial', sans-serif;
+
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  border: none;
+  font-size: var(--Input-font);
+  color: var(--label-color);
+  line-height: var(--textArea-lineHeight);
+  margin-left: 13px;
+}
+
+.Input-secondaryText {
+  display: none;
+}
+
+.Input--inline .Input-secondaryText {
+  display: inline;
+  font-family: 'YS Text';
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.059999991208314896px;
+  margin-left: 8px;
+  text-align: left;
+}
+
+/* FIXME: Переписать стили кнопки удаления */
+.Input-deleteButton {
+  display: block;
+  width: var(--deleteButton-size);
+  height: var(--deleteButton-size);
+  border-radius: var(--deleteButton-size);
+  position: relative;
+  cursor: pointer;
+  background-color: #cccccc;
+  z-index: 1;
+  margin-right: 10px;
+}
+.Input-deleteButton::before {
+  content: '+';
+  color: #ffffff;
+  position: absolute;
+  z-index: 2;
+  transform: rotate(45deg);
+  font-size: 20px;
+  left: 2px;
+  top: -3px;
+}
+
+/* TODO: Сделать стили для фокуса */
+.Input-text:focus,
+.input-text:hover {
+  outline: none;
+}
