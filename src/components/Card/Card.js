@@ -61,6 +61,7 @@ export const Card = ({ className, data }) => {
         </div>
         <div className="Card-Section-small">
           <CardPropertyData
+            className="Card-Commit"
             type={PROPERTY_TYPES.COMMIT}
             primaryText={data.branch}
             secondaryText={data.commit}
@@ -73,6 +74,7 @@ export const Card = ({ className, data }) => {
       </div>
       <div className="Card-Section-Main">
         <CardPropertyData
+        className="Card-Date"
           type={PROPERTY_TYPES.DATETIME}
           primaryText={data.datetime}
         />

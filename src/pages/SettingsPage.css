@@ -42,3 +42,7 @@
 .SettingsPage-wrapper--footer {
   background-color: #f0f2f3;
 }
+
+.MainPage-ShowMoreButton {
+  align-self: flex-start;
+}

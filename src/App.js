@@ -8,14 +8,14 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { cardsData as TestingCardsData } from './assets/cardsData'
 
 function App() {
-  const [isSettingsStatus, setSettingsStatus] = useState(false)
+  const [isSettingsStatus, setSettingsStatus] = useState(true)
   const [settings, setSettings] = useState({
     gitHubRepository: null,
     buildCommand: null,
     mainBranch: null,
     period: null,
   })
-  const [cardsData, setCardsData] = useState([])
+  const [cardsData, setCardsData] = useState(TestingCardsData)
 
   function getCardsData() {
     setCardsData(TestingCardsData)
@@ -34,6 +34,7 @@ function App() {
           </Route>
           <Route path="/">
             <MainPage
+              settings={settings}
               isSettingsStatus={isSettingsStatus}
               cardsData={cardsData}
             />

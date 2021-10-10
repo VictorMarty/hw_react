@@ -20,11 +20,17 @@ export const MainPage = (props) => {
   function toSetting() {
     history.push('/settings', { from: 'MainPage' })
   }
-  const title = 'School CI server'
-  let headers_button
+  let title = ''
+  console.log(props.settings.gitHubRepository)
+  if (props.isSettingsStatus) {
+    title = props.settings.gitHubRepository
+  } else {
+    title = 'School CI server'
+  }
+  let headerButtons
   //FIXME: Переделать на фуккцию и переменовать в камелкейс
   if (props.isSettingsStatus) {
-    headers_button = (
+    headerButtons = (
       <>
         <Button
           size={BUTTON_SIZES.S}
@@ -45,7 +51,7 @@ export const MainPage = (props) => {
       </>
     )
   } else {
-    headers_button = (
+    headerButtons = (
       <Button
         size={BUTTON_SIZES.S}
         view={BUTTON_VIEWS.CONTROL}
@@ -76,7 +82,7 @@ export const MainPage = (props) => {
         key={cardData.index}
         // FIXME: стили для карточки марджины
 
-        className="some ckassName"
+        className="MainPageCard"
         data={cardData}
       />
     )
@@ -85,7 +91,7 @@ export const MainPage = (props) => {
   return (
     <div className="MainPage">
       <div className="MainPage--header MainPage-container">
-        <Header title={title} buttons={headers_button} />
+        <Header title={title} buttons={headerButtons} />
       </div>
       <div className="MainPage--main MainPage-container">
         {!props.isSettingsStatus ? (
@@ -105,6 +111,7 @@ export const MainPage = (props) => {
           <div className="MainPage--history">
             {cards}
             <Button
+              className="MainPage-ShowMoreButton"
               size={BUTTON_SIZES.S}
               view={BUTTON_VIEWS.CONTROL}
               pin={BUTTON_PINS.ROUND_ROUND}
