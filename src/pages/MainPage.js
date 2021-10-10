@@ -21,7 +21,6 @@ export const MainPage = (props) => {
     history.push('/settings', { from: 'MainPage' })
   }
   let title = ''
-  console.log(props.settings.gitHubRepository)
   if (props.isSettingsStatus) {
     title = props.settings.gitHubRepository
   } else {
@@ -39,7 +38,7 @@ export const MainPage = (props) => {
           children="Run build"
           className="first-btn"
           iconLeft={Icon({ icon: iconRunBuild })}
-          // onClick
+          onClick={props.openPopup}
         />
         <Button
           size={BUTTON_SIZES.S}

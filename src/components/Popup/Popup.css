@@ -1,5 +1,12 @@
 .Popup {
+  width: 375px;
   box-sizing: border-box;
-  max-width: 485px;
+  box-shadow: 0 2px 7px 0 rgba(#000000, 0.31);
+  position: relative;
   padding: 20px;
+  background-color: #fff;
+}
+
+.PopUp-RunBuildButton {
+  margin-right: 8px;
 }

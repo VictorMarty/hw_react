@@ -5,10 +5,12 @@ import './App.css'
 import React, { useState } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
+import { PopUp } from './components/PopUp/PopUp'
+
 import { cardsData as TestingCardsData } from './assets/cardsData'
 
 function App() {
-  const [isSettingsStatus, setSettingsStatus] = useState(true)
+  const [isSettingsStatus, setSettingsStatus] = useState(false)
   const [settings, setSettings] = useState({
     gitHubRepository: null,
     buildCommand: null,
@@ -16,11 +18,21 @@ function App() {
     period: null,
   })
   const [cardsData, setCardsData] = useState(TestingCardsData)
-
+  const [popUpVisible, setPopUpVisible] = useState(false)
   function getCardsData() {
     setCardsData(TestingCardsData)
   }
 
+  function closePopUp(event) {
+    if (event) {
+      event.preventDefault()
+    }
+
+    setPopUpVisible(false)
+  }
+  function openPopup() {
+    setPopUpVisible(true)
+  }
   return (
     <div className="App">
       <Router>
@@ -37,10 +49,16 @@ function App() {
               settings={settings}
               isSettingsStatus={isSettingsStatus}
               cardsData={cardsData}
+              openPopup={openPopup}
             />
           </Route>
         </Switch>
       </Router>
+      {!!popUpVisible && (
+        <div className="AppPopUp-background">
+          <PopUp className="AppPopUp" onClose={closePopUp}></PopUp>
+        </div>
+      )}
     </div>
   )
 }
