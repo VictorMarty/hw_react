@@ -25,8 +25,13 @@ export const SettingsPage = (props) => {
   }
 
   const saveSettings = (event) => {
+    if (gitHubRepositoryLocal === '' || buildCommandLocal === '') {
+      return
+    }
     if (gitHubRepositoryLocal !== 'philip1967/my-awesome-repo') {
       alert('Ошибка, попробуйте название : philip1967/my-awesome-repo')
+      event.preventDefault()
+      return
     } else {
       props.setSettings({
         gitHubRepository: gitHubRepositoryLocal,
