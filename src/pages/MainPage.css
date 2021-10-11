@@ -13,6 +13,11 @@
   justify-content: center;
 }
 
+
+
+
+
+
 .MainPage--header {
   flex: 0 1 auto;
 }
@@ -49,6 +54,9 @@
 .Button.first-btn {
   margin-right: 8px;
 }
+
+
+
 
 .mainDescription {
   margin-top: 32px;

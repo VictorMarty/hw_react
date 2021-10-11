@@ -1,3 +1,4 @@
+import cn from 'classnames'
 import './MainPage.css'
 import { Icon } from '../components/Icon/Icon'
 import { Header } from '../components/Header/Header'
@@ -26,6 +27,7 @@ export const MainPage = (props) => {
   } else {
     title = 'School CI server'
   }
+  const isSettingsStatus = props.isSettingsStatus
   let headerButtons
   //FIXME: Переделать на фуккцию и переменовать в камелкейс
   if (props.isSettingsStatus) {
@@ -90,7 +92,11 @@ export const MainPage = (props) => {
   return (
     <div className="MainPage">
       <div className="MainPage--header MainPage-container">
-        <Header title={title} buttons={headerButtons} />
+        <Header
+          title={title}
+          buttons={headerButtons}
+          className={cn({ isSettings: isSettingsStatus === true })}
+        />
       </div>
       <div className="MainPage--main MainPage-container">
         {!props.isSettingsStatus ? (
