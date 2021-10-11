@@ -10,3 +10,15 @@
 .PopUp-RunBuildButton {
   margin-right: 8px;
 }
+
+.PopUp-RunBuildButton {
+  margin-right: 0px;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 576px) {
+  .PopUp-RunBuildButton {
+    margin-right: 0px;
+    margin-bottom: 12px;
+  }
+}

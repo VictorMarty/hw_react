@@ -26,7 +26,7 @@
   --button-size-s-height: 28px;
   --button-size-s-font: 13px;
   --button-size-s-lineHeight: 28px;
-  --button-size-s-text-indentAll: 13px;
+  --button-size-s-text-indentAll: 0 0 13px 0px;
   --button-size-s-icon-width: 28px;
   --button-size-s-icon-indentOnly: 28px;
   --button-size-s-icon-indentLeft: 25px;
@@ -57,6 +57,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
 }
 
 .Button:disabled {
@@ -157,7 +158,9 @@
 }
 
 .Button_size_s .Button-Text {
-  margin: var(--button-size-s-text-indentAll);
+  margin-right: 13px;
+  margin-left: 13px;
+  /* margin: var(--button-size-s-text-indentAll); */
 }
 
 .Button_size_s .Button-Icon {
@@ -198,4 +201,18 @@
 
 .Button_pin_round-round {
   border-radius: 4px;
+}
+
+@media (max-width: 576px) {
+  .Button {
+    min-width: 30px;
+  }
+  .Button-Icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .Button-Icon ~ .Button-Text {
+    display: none;
+  }
 }

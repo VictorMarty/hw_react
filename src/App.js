@@ -17,7 +17,7 @@ function App() {
     mainBranch: null,
     period: null,
   })
-  const [cardsData, setCardsData] = useState(TestingCardsData)
+  const [cardsData, setCardsData] = useState([])
   const [popUpVisible, setPopUpVisible] = useState(false)
   function getCardsData() {
     setCardsData(TestingCardsData)

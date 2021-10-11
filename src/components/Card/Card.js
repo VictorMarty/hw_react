@@ -46,17 +46,19 @@ export const Card = ({ className, data }) => {
     <div className={cn('Card', className)}>
       <div className="Card-Section-main">
         <div className="Card-Section-small Card-Section-small--title">
-          <CardIcon cardStatus={data.cardStatus} className="CardIcon" />
-          <span
-            className={cn('Card-Index', {
-              Card_Index_complete: data.cardStatus === CARD_STATUS.COMPLETE,
-              Card_Index_error: data.cardStatus === CARD_STATUS.ERROR,
-              Card_Index_panding: data.cardStatus === CARD_STATUS.PENDING,
-              Card_Index_pseudo: data.cardStatus === CARD_STATUS.PSEUDO,
-            })}
-          >
-            {data.index}
-          </span>
+          <div className="Card-Section-Icon-Index">
+            <CardIcon cardStatus={data.cardStatus} className="CardIcon" />
+            <span
+              className={cn('Card-Index', {
+                Card_Index_complete: data.cardStatus === CARD_STATUS.COMPLETE,
+                Card_Index_error: data.cardStatus === CARD_STATUS.ERROR,
+                Card_Index_pending: data.cardStatus === CARD_STATUS.PENDING,
+                Card_Index_pseudo: data.cardStatus === CARD_STATUS.PSEUDO,
+              })}
+            >
+              {data.index}
+            </span>
+          </div>
           <span className="Card-Message">{data.message}</span>
         </div>
         <div className="Card-Section-small">
@@ -67,18 +69,20 @@ export const Card = ({ className, data }) => {
             secondaryText={data.commit}
           />
           <CardPropertyData
+          className="Card-Author"
             type={PROPERTY_TYPES.AUTHOR}
             primaryText={data.author}
           />
         </div>
       </div>
-      <div className="Card-Section-Main">
+      <div className="Card-Section-Main Card-Section-Main--datetime">
         <CardPropertyData
-        className="Card-Date"
+          className="Card-Date"
           type={PROPERTY_TYPES.DATETIME}
           primaryText={data.datetime}
         />
         <CardPropertyData
+        className="Card-Time"
           type={PROPERTY_TYPES.DURATION}
           primaryText={data.duration}
         />

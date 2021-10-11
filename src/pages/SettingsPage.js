@@ -41,10 +41,6 @@ export const SettingsPage = (props) => {
       })
       props.setSettingsStatus(true)
       props.getCardsData()
-      // props.setGitHubRepository(gitHubRepositoryLocal)
-      // props.setbuildCommand(buildCommandLocal)
-      // props.setmainBranch(mainBranchLocal)
-      // props.setGitHubRepository(peiodLocal)
       routeChange(history)('/')()
     }
   }

@@ -10,25 +10,41 @@
   font-size: var(--font-size);
   line-height: var(--line-height);
   display: flex;
+  flex-wrap: nowrap;
   justify-content: space-start;
   align-items: center;
 }
-
-/* TODO: вспомнить, как формировать медиа запросы */
-/* @media screen {
-
-} */
 
 .CardPropertyData-Icon,
 .CardPropertyData-SecondaryText {
   opacity: var(--opacity);
 }
 
-/* FIXME: Переделать позиционирование */
 .CardPropertyData-Icon {
   margin-right: 5px;
 }
 
 .CardPropertyData-PrimaryText {
+  white-space: nowrap;
   margin-right: 4px;
+}
+
+@media (max-width: 576px) {
+  .CardPropertyData-PrimaryText {
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0.059999991208314896px;
+    text-align: left;
+  }
+
+  .CardPropertyData-SecondaryText {
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0.06px;
+    text-align: left;
+  }
 }

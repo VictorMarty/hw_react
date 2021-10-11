@@ -30,5 +30,13 @@
 .FormButtonsArea {
   display: flex;
   flex-direction: row;
-  
+
+}
+@media (max-width: 576px) {
+  .FormButtonsArea {
+    flex-direction: column;
+  }
+  .FormButtonsArea .SettingsPage-Button {
+    margin-bottom: 12px;
+  }
 }

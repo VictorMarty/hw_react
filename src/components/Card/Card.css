@@ -14,8 +14,8 @@
   flex-direction: row;
   justify-content: space-between;
   padding: var(--CardIcon-n-padding);
-  box-shadow: 0px 1px 1px 0px var(--Card-box-shadow-color);
-  box-shadow: 0px 0px 1px 0px var(--Card-box-shadow-color);
+  box-shadow: 0px 0px 1px rgba(67, 68, 69, 0.3),
+    0px 1px 1px rgba(67, 68, 69, 0.3);
   border-radius: 6px;
 }
 
@@ -39,6 +39,12 @@
   margin-bottom: 8px;
 }
 
+.Card-Section-Icon-Index {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .Card-Index {
   margin-left: 8px;
   margin-right: 4px;
@@ -48,10 +54,10 @@
   color: #00b341;
 }
 .Card_Index_pending {
-  color: #ff3333;
+  color: #ff9a00;
 }
 .Card_Index_error {
-  color: #ff9a00;
+  color: #ff3333;
 }
 
 .Card-Commit {
@@ -61,4 +67,55 @@
 
 .Card-Date {
   margin-bottom: 12px;
+}
+
+@media (max-width: 576px) {
+  .Card {
+    flex-direction: column;
+  }
+  .Card-Section-small--title {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .CardIcon {
+    width: 15px;
+    height: 15px;
+  }
+  .Card-Message {
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0px;
+    text-align: left;
+    margin-left: 24px;
+    margin-top: 8px;
+  }
+
+  .Card-Section-small {
+    flex-direction: column;
+  }
+  .Card-Commit {
+    margin-left: 24px;
+  }
+  .Card-Author {
+    margin-top: 8px;
+    margin-left: 24px;
+  }
+  .Card-Date {
+    margin-bottom: 8px;
+    margin-left: 24px;
+    margin-top: 8px;
+  }
+  .Card-Time {
+    margin-bottom: 8px;
+    margin-top: 8px;
+  }
+  .Card-Section-Main--datetime {
+    display: flex;
+    flex-direction: row;
+
+    border-top: 1px solid #f0f2f3;
+    margin-top: 8px;
+  }
 }
