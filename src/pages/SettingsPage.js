@@ -13,6 +13,9 @@ import {
 
 import { useHistory } from 'react-router-dom'
 
+import { useDispatch } from 'react-redux'
+import { setSettings } from '../reducers/settingsReducer'
+
 export const SettingsPage = (props) => {
   const [gitHubRepositoryLocal, setGitHubRepositoryLocal] = useState('')
   const [buildCommandLocal, setbuildCommandLocal] = useState('')
@@ -24,6 +27,8 @@ export const SettingsPage = (props) => {
     history.push(path)
   }
 
+  const dispatch = useDispatch()
+
   const saveSettings = (event) => {
     if (gitHubRepositoryLocal === '' || buildCommandLocal === '') {
       return
@@ -33,12 +38,14 @@ export const SettingsPage = (props) => {
       event.preventDefault()
       return
     } else {
-      props.setSettings({
-        gitHubRepository: gitHubRepositoryLocal,
-        buildCommand: buildCommandLocal,
-        mainBranch: mainBranchLocal,
-        period: peiodLocal,
-      })
+      dispatch(
+        setSettings({
+          gitHubRepository: gitHubRepositoryLocal,
+          buildCommand: buildCommandLocal,
+          mainBranch: mainBranchLocal,
+          period: peiodLocal,
+        })
+      )
       props.setSettingsStatus(true)
       props.getCardsData()
       routeChange(history)('/')()

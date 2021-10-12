@@ -16,52 +16,53 @@ import iconSettings from './../assets/icons/settings.svg'
 
 import { useHistory } from 'react-router-dom'
 
+import { useSelector } from 'react-redux'
+
 export const MainPage = (props) => {
   const history = useHistory()
   function toSetting() {
     history.push('/settings', { from: 'MainPage' })
   }
-  let title = ''
-  if (props.isSettingsStatus) {
-    title = props.settings.gitHubRepository
-  } else {
+
+  let title = useSelector((state) => state.repos.gitHubRepository)
+  if (!props.isSettingsStatus) {
     title = 'School CI server'
   }
   const isSettingsStatus = props.isSettingsStatus
-  let headerButtons
-  //FIXME: Переделать на фуккцию и переменовать в камелкейс
-  if (props.isSettingsStatus) {
-    headerButtons = (
-      <>
+  let headerButtons = () => {
+    if (props.isSettingsStatus) {
+      return (
+        <>
+          <Button
+            size={BUTTON_SIZES.S}
+            view={BUTTON_VIEWS.CONTROL}
+            pin={BUTTON_PINS.ROUND_ROUND}
+            children="Run build"
+            className="first-btn"
+            iconLeft={Icon({ icon: iconRunBuild })}
+            onClick={props.openPopup}
+          />
+          <Button
+            size={BUTTON_SIZES.S}
+            view={BUTTON_VIEWS.CONTROL}
+            pin={BUTTON_PINS.ROUND_ROUND}
+            iconOnly={Icon({ icon: iconSettings })}
+            onClick={toSetting}
+          />
+        </>
+      )
+    } else {
+      return (
         <Button
           size={BUTTON_SIZES.S}
           view={BUTTON_VIEWS.CONTROL}
           pin={BUTTON_PINS.ROUND_ROUND}
-          children="Run build"
-          className="first-btn"
-          iconLeft={Icon({ icon: iconRunBuild })}
-          onClick={props.openPopup}
-        />
-        <Button
-          size={BUTTON_SIZES.S}
-          view={BUTTON_VIEWS.CONTROL}
-          pin={BUTTON_PINS.ROUND_ROUND}
-          iconOnly={Icon({ icon: iconSettings })}
+          children="Settings"
+          iconLeft={Icon({ icon: iconSettings })}
           onClick={toSetting}
         />
-      </>
-    )
-  } else {
-    headerButtons = (
-      <Button
-        size={BUTTON_SIZES.S}
-        view={BUTTON_VIEWS.CONTROL}
-        pin={BUTTON_PINS.ROUND_ROUND}
-        children="Settings"
-        iconLeft={Icon({ icon: iconSettings })}
-        onClick={toSetting}
-      />
-    )
+      )
+    }
   }
 
   const cards = props.cardsData.map((cardData) => {
@@ -94,7 +95,7 @@ export const MainPage = (props) => {
       <div className="MainPage--header MainPage-container">
         <Header
           title={title}
-          buttons={headerButtons}
+          buttons={headerButtons()}
           className={cn({ isSettings: isSettingsStatus === true })}
         />
       </div>

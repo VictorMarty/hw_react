@@ -11,12 +11,12 @@ import { cardsData as TestingCardsData } from './assets/cardsData'
 
 function App() {
   const [isSettingsStatus, setSettingsStatus] = useState(false)
-  const [settings, setSettings] = useState({
-    gitHubRepository: null,
-    buildCommand: null,
-    mainBranch: null,
-    period: null,
-  })
+  // const [settings, setSettings] = useState({
+  //   gitHubRepository: null,
+  //   buildCommand: null,
+  //   mainBranch: null,
+  //   period: null,
+  // })
   const [cardsData, setCardsData] = useState([])
   const [popUpVisible, setPopUpVisible] = useState(false)
   function getCardsData() {
@@ -39,14 +39,14 @@ function App() {
         <Switch>
           <Route path="/settings">
             <SettingsPage
-              setSettings={setSettings}
+              // setSettings={setSettings}
               setSettingsStatus={setSettingsStatus}
               getCardsData={getCardsData}
             />
           </Route>
           <Route path="/">
             <MainPage
-              settings={settings}
+              // settings={settings}
               isSettingsStatus={isSettingsStatus}
               cardsData={cardsData}
               openPopup={openPopup}
