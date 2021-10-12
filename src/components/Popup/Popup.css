@@ -5,15 +5,14 @@
   position: relative;
   padding: 20px;
   background-color: #fff;
+  box-shadow: 0px 6px 16px 0px #4344454D;
+
+  box-shadow: 0px 0px 1px 0px #4344454D;
+
 }
 
 .PopUp-RunBuildButton {
   margin-right: 8px;
-}
-
-.PopUp-RunBuildButton {
-  margin-right: 0px;
-  margin-bottom: 12px;
 }
 
 @media (max-width: 576px) {
