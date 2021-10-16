@@ -13,7 +13,7 @@ import {
 import mainIcon from './../assets/icons/tools.svg'
 import iconRunBuild from './../assets/icons/play.svg'
 import iconSettings from './../assets/icons/settings.svg'
-
+import { Helmet } from 'react-helmet'
 import { useHistory } from 'react-router-dom'
 
 import { useSelector } from 'react-redux'
@@ -92,6 +92,10 @@ export const MainPage = (props) => {
 
   return (
     <div className="MainPage">
+      <Helmet>
+        <title>Main Page</title>
+        <meta name="description" content="Main Page" />
+      </Helmet>
       <div className="MainPage--header MainPage-container">
         <Header
           title={title}

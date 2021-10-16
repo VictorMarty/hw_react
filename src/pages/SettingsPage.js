@@ -14,9 +14,8 @@ import {
   VIEWS as BUTTON_VIEWS,
   PINS as BUTTON_PINS,
 } from '../components/Button/Button'
-
 import { useHistory } from 'react-router-dom'
-
+import { Helmet } from 'react-helmet'
 import { useDispatch } from 'react-redux'
 import { setSettings } from '../reducers/settingsReducer'
 
@@ -164,6 +163,10 @@ export const SettingsPage = (props) => {
 
   return (
     <div className="SettingsPage">
+      <Helmet>
+        <title>Settings Page</title>
+        <meta name="description" content="Settings Page" />
+      </Helmet>
       <div className="SettingsPage--header SettingsPage-container">
         <Header title="School CI server" />
       </div>
