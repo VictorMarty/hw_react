@@ -21,7 +21,7 @@ export const SettingsPage = (props) => {
   const [buildCommandLocal, setbuildCommandLocal] = useState('')
   const [mainBranchLocal, setmainBranchLocal] = useState('')
   const [peiodLocal, setPeiodLocal] = useState('')
-
+  const [disabled, setDisabled] = useState(false)
   const history = useHistory()
   const routeChange = (history) => (path) => () => {
     history.push(path)
@@ -33,23 +33,27 @@ export const SettingsPage = (props) => {
     if (gitHubRepositoryLocal === '' || buildCommandLocal === '') {
       return
     }
-    if (gitHubRepositoryLocal !== 'philip1967/my-awesome-repo') {
-      alert('Ошибка, попробуйте название : philip1967/my-awesome-repo')
-      event.preventDefault()
-      return
-    } else {
-      dispatch(
-        setSettings({
-          gitHubRepository: gitHubRepositoryLocal,
-          buildCommand: buildCommandLocal,
-          mainBranch: mainBranchLocal,
-          period: peiodLocal,
-        })
-      )
-      props.setSettingsStatus(true)
-      props.getCardsData()
-      routeChange(history)('/')()
-    }
+    setDisabled(true)
+    setTimeout(() => {
+      setDisabled(false)
+      if (gitHubRepositoryLocal !== 'philip1967/my-awesome-repo') {
+        alert('Ошибка, попробуйте название : philip1967/my-awesome-repo')
+        event.preventDefault()
+        return
+      } else {
+        dispatch(
+          setSettings({
+            gitHubRepository: gitHubRepositoryLocal,
+            buildCommand: buildCommandLocal,
+            mainBranch: mainBranchLocal,
+            period: peiodLocal,
+          })
+        )
+        props.setSettingsStatus(true)
+        props.getCardsData()
+        routeChange(history)('/')()
+      }
+    }, 1000)
   }
 
   const inputsData = [
@@ -89,28 +93,25 @@ export const SettingsPage = (props) => {
     },
   ]
 
-  const buttons = [
-    <Button
-      children="Save"
-      onClick={saveSettings}
-      pin={BUTTON_PINS.ROUND_ROUND}
-      view={BUTTON_VIEWS.ACTION}
-      size={BUTTON_SIZES.N}
-      className="SettingsPage-Button"
-      disabled={false}
-      // TODO: Добавить проверку на ошибку, сохранение настроек, добавление карточек
-    />,
-    <Button
-      children="Cancel"
-      // onClick
-
-      pin={BUTTON_PINS.ROUND_ROUND}
-      view={BUTTON_VIEWS.CONTROL}
-      size={BUTTON_SIZES.N}
-      className="SettingsPage-Button"
-      disabled={false}
-      onClick={routeChange(history)('/')}
-    />,
+  const buttonsData = [
+    {
+      children: 'Save',
+      onClick: saveSettings,
+      pin: BUTTON_PINS.ROUND_ROUND,
+      view: BUTTON_VIEWS.ACTION,
+      size: BUTTON_SIZES.N,
+      className: 'SettingsPage-Button',
+      disabled: disabled,
+    },
+    {
+      children: 'Cancel',
+      onClick: routeChange(history)('/'),
+      pin: BUTTON_PINS.ROUND_ROUND,
+      view: BUTTON_VIEWS.CONTROL,
+      size: BUTTON_SIZES.N,
+      className: 'SettingsPage-Button',
+      disabled: disabled,
+    },
   ]
 
   // FIXME: Передавать параметры деструктуризацией
@@ -126,6 +127,21 @@ export const SettingsPage = (props) => {
         className={data.required}
         secondaryText={data.secondaryText}
         type={data.type}
+      />
+    )
+  })
+
+  const buttons = buttonsData.map((data, index) => {
+    return (
+      <Button
+        key={index}
+        children={data.children}
+        onClick={data.onClick}
+        pin={data.pin}
+        view={data.view}
+        size={data.size}
+        className={data.className}
+        disabled={data.disabled}
       />
     )
   })
@@ -154,7 +170,6 @@ export const SettingsPage = (props) => {
           buttons={settingsFormData.buttons}
         />
       </div>
-
       <div className=" SettingsPage--footer">
         <Footer className="SettingsPage-container" />
       </div>
