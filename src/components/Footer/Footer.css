@@ -1,7 +1,6 @@
 :root {
-  --var-Footer-YourName-color: #7F8285;
+  --var-Footer-YourName-color: #7f8285;
 }
-
 
 .Footer {
   width: 100%;
@@ -14,6 +13,7 @@
 
 .Footer-menu {
   display: flex;
+  align-items: center;
   list-style: none;
   margin: 0;
   padding: 0;

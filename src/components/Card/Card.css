@@ -91,7 +91,10 @@
     margin-left: 24px;
     margin-top: 8px;
   }
-
+  .Card-Section-Main--datetime {
+    flex-wrap: wrap;
+    margin-left: 26px;
+  }
   .Card-Section-small {
     flex-direction: column;
   }
@@ -103,19 +106,18 @@
     margin-left: 24px;
   }
   .Card-Date {
-    margin-bottom: 8px;
-    margin-left: 24px;
-    margin-top: 8px;
+    margin-bottom: 0;
   }
   .Card-Time {
     margin-bottom: 8px;
     margin-top: 8px;
   }
+  .Card-Section-Main--commitinfo {
+    border-bottom: 1px solid #f0f2f3;
+    padding-bottom: 8px;
+  }
   .Card-Section-Main--datetime {
     display: flex;
     flex-direction: row;
-
-    border-top: 1px solid #f0f2f3;
-    margin-top: 8px;
   }
 }

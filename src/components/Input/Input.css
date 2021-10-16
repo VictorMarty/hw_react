@@ -59,9 +59,11 @@
 }
 
 .Input-textArea {
+  position: relative;
   box-sizing: border-box;
   height: var(--textArea-height);
   display: flex;
+
   justify-content: space-between;
   align-items: center;
   /* padding: var(--textArea-indentAll); */
@@ -78,7 +80,7 @@
 
 .Input-text {
   font-family: 'YS Text', 'Arial', sans-serif;
-
+  max-width: 80%;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -105,27 +107,12 @@
   text-align: left;
 }
 
-/* FIXME: Переписать стили кнопки удаления */
 .Input-deleteButton {
-  display: block;
-  width: var(--deleteButton-size);
-  height: var(--deleteButton-size);
-  border-radius: var(--deleteButton-size);
-  position: relative;
-  cursor: pointer;
-  background-color: #cccccc;
-  z-index: 1;
-  margin-right: 10px;
-}
-.Input-deleteButton::before {
-  content: '+';
-  color: #ffffff;
   position: absolute;
-  z-index: 2;
-  transform: rotate(45deg);
-  font-size: 20px;
-  left: 2px;
-  top: -3px;
+  width: 16px;
+  height: 16px;
+  right: 10px;
+  top: 9px;
 }
 
 /* TODO: Сделать стили для фокуса */

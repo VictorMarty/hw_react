@@ -2,7 +2,11 @@ import './SettingsPage.css'
 import { useState } from 'react'
 import { Header } from '../components/Header/Header'
 import { Form } from '../components/Form/Form'
-import { Input, TYPES as INPUT_TYPES } from '../components/Input/Input'
+import {
+  Input,
+  TYPES as INPUT_TYPES,
+  MASKS as INPUT_MASKS,
+} from '../components/Input/Input'
 import { Footer } from '../components/Footer/Footer'
 import {
   Button,
@@ -90,6 +94,7 @@ export const SettingsPage = (props) => {
       className: 'SettingsPage-Input SettingsPage-Input--inline',
       type: INPUT_TYPES.INLINE,
       secondaryText: 'minutes',
+      mask: INPUT_MASKS.NUMBER,
     },
   ]
 
@@ -127,6 +132,7 @@ export const SettingsPage = (props) => {
         className={data.required}
         secondaryText={data.secondaryText}
         type={data.type}
+        mask={data.mask}
       />
     )
   })

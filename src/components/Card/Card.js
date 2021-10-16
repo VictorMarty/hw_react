@@ -44,7 +44,7 @@ const CardIcon = ({ cardStatus, className }) => {
 export const Card = ({ className, data }) => {
   return (
     <div className={cn('Card', className)}>
-      <div className="Card-Section-main">
+      <div className="Card-Section-Main Card-Section-Main--commitinfo">
         <div className="Card-Section-small Card-Section-small--title">
           <div className="Card-Section-Icon-Index">
             <CardIcon cardStatus={data.cardStatus} className="CardIcon" />
@@ -69,7 +69,7 @@ export const Card = ({ className, data }) => {
             secondaryText={data.commit}
           />
           <CardPropertyData
-          className="Card-Author"
+            className="Card-Author"
             type={PROPERTY_TYPES.AUTHOR}
             primaryText={data.author}
           />
@@ -82,7 +82,7 @@ export const Card = ({ className, data }) => {
           primaryText={data.datetime}
         />
         <CardPropertyData
-        className="Card-Time"
+          className="Card-Time"
           type={PROPERTY_TYPES.DURATION}
           primaryText={data.duration}
         />

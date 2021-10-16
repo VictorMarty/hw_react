@@ -1,5 +1,7 @@
 import classNames from 'classnames'
 import './Input.css'
+import React from 'react'
+import { ReactComponent as CloseSVG } from './../../assets/icons/clearinput.svg'
 const cn = classNames
 
 export const SIZES = {
@@ -12,6 +14,11 @@ export const TYPES = {
   INLINE: 'inline',
 }
 
+export const MASKS = {
+  TEXT: 'text',
+  NUMBER: 'number',
+}
+
 export const Input = ({
   value,
   onChange,
@@ -20,6 +27,7 @@ export const Input = ({
   placeholder = '',
   size = SIZES.N,
   type = TYPES.BLOCK,
+  mask = MASKS.TEXT,
   className,
   disabled,
   secondaryText = '',
@@ -49,7 +57,6 @@ export const Input = ({
   function HandleChange(event) {
     onChange(event.target.value)
   }
-
   function HandleClearInput() {
     onChange('')
   }
@@ -59,18 +66,18 @@ export const Input = ({
       <div className={inputWrapperClassName}>
         <input
           className={inputTextClassName}
-          type="text"
+          type={mask}
           value={value}
           onChange={HandleChange}
           disabled={disabled}
           required={required}
           placeholder={placeholder}
         />
-        {type === TYPES.BLOCK && (
-          <span
+        {type === TYPES.BLOCK && value && (
+          <CloseSVG
             className="Input-deleteButton"
             onClick={HandleClearInput}
-          ></span>
+          ></CloseSVG>
         )}
       </div>
       <span className="Input-secondaryText">{secondaryText}</span>
