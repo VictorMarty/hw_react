@@ -10,16 +10,24 @@ import { cardsData as TestingCardsData } from './assets/cardsData'
 
 function App() {
   const [isSettingsStatus, setSettingsStatus] = useState(false)
-  // const [settings, setSettings] = useState({
-  //   gitHubRepository: null,
-  //   buildCommand: null,
-  //   mainBranch: null,
-  //   period: null,
-  // })
   const [cardsData, setCardsData] = useState([])
   const [popUpVisible, setPopUpVisible] = useState(false)
   function getCardsData() {
     setCardsData(TestingCardsData)
+  }
+  // FIXME: Ошибка, не пожет сделать map по новым данным
+  function addNewCard(commitHash, status) {
+    const newCardData = {
+      index: '#1368',
+      message: 'add documentation for postgres scaler',
+      branch: 'master',
+      commit: commitHash,
+      author: 'Philip Kirkorov',
+      datetime: '21 янв, 03:06',
+      duration: '1 ч 20 мин',
+      cardStatus: status,
+    }
+    setCardsData(cardsData.unshift(newCardData))
   }
 
   function closePopUp(event) {
@@ -38,14 +46,12 @@ function App() {
         <Switch>
           <Route path="/settings">
             <SettingsPage
-              // setSettings={setSettings}
               setSettingsStatus={setSettingsStatus}
               getCardsData={getCardsData}
             />
           </Route>
           <Route path="/">
             <MainPage
-              // settings={settings}
               isSettingsStatus={isSettingsStatus}
               cardsData={cardsData}
               openPopup={openPopup}
@@ -56,7 +62,11 @@ function App() {
       </Router>
       {!!popUpVisible && (
         <div className="AppPopUp-background">
-          <Popup className="AppPopUp" onClose={closePopUp}></Popup>
+          <Popup
+            className="AppPopUp"
+            onClose={closePopUp}
+            addNewCard={addNewCard}
+          ></Popup>
         </div>
       )}
     </div>

@@ -15,7 +15,7 @@ import {
 import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { setSettings } from '../reducers/settingsReducer'
+import { setSettings } from '../redux/reducers/settingsReducer'
 
 export const SettingsPage = (props) => {
   // TODO: Прокидывать изначальное состояние стора

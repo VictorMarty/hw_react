@@ -1,4 +1,4 @@
-const SET_SETTINGS = 'SET_SETTINGS'
+import { SET_SETTINGS } from './../actions'
 
 const defaultState = {
   gitHubRepository: null,

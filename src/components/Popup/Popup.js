@@ -9,9 +9,22 @@ import {
 import { useState } from 'react'
 import { Input } from '../Input/Input'
 import { Form } from './../Form/Form'
-export const Popup = ({ className, onClose }) => {
+import { useEffect } from 'react'
+export const Popup = ({ className, onClose, addNewCard }) => {
   const [disabled, setDisabled] = useState(false)
   const [commitHash, setCommitHash] = useState('')
+
+  const closeKeyHandler = (event) => {
+    if (event.charCode || event.keyCode === 27) {
+      setTimeout(onClose)
+    }
+  }
+  useEffect(() => {
+    document.body.addEventListener('keydown', closeKeyHandler)
+    return function cleanup() {
+      document.body.removeEventListener('keydown', closeKeyHandler)
+    }
+  })
 
   const runBuild = (event) => {
     setDisabled(true)
@@ -20,9 +33,11 @@ export const Popup = ({ className, onClose }) => {
       event.preventDefault()
       if (cubic <= 0.7) {
         // TODO: Добавить добавление новой карточки по экшену
+        // addNewCard(commitHash, 'complete')
         setDisabled(false)
         onClose()
       } else {
+        // addNewCard(commitHash, 'error')
         setDisabled(false)
         onClose()
       }
