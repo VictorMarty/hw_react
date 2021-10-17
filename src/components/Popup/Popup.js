@@ -9,7 +9,7 @@ import {
 import { useState } from 'react'
 import { Input } from '../Input/Input'
 import { Form } from './../Form/Form'
-export const PopUp = ({ className, onClose }) => {
+export const Popup = ({ className, onClose }) => {
   const [disabled, setDisabled] = useState(false)
   const [commitHash, setCommitHash] = useState('')
 

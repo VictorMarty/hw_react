@@ -6,7 +6,6 @@
   --CardIcon-n-marginRight: ;
 }
 
-/* TODO: Закончить стилизацию элемента */
 .Card {
   max-width: 100%;
   flex-grow: 1;

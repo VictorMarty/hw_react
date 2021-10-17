@@ -5,31 +5,8 @@
   align-items: center;
 }
 
-.SettingsPage-container {
-  max-width: 884px;
-  width: 100%;
-  padding: 10px 20px;
-}
-
-.SettingsPage-container--small {
-  max-width: 500px;
-  width: 100%;
-}
-
-.SettingsPage--header {
-  flex: 0 1 auto;
-}
-
-.SettingsPage--main {
-  flex: 1 0 auto;
-}
-
-.SettingsPage--footer {
-  width: 100%;
-  flex: 0 1 auto;
-  display: flex;
-  justify-content: center;
-  background-color: #f0f2f3;
+.SettingsPage-content-container {
+  margin-top: 32px;
 }
 
 .SettingsPage-Button {
@@ -39,8 +16,3 @@
 .SettingsPage-Input {
   margin-bottom: 18px;
 }
-.SettingsPage-wrapper--footer {
-  background-color: #f0f2f3;
-}
-
-

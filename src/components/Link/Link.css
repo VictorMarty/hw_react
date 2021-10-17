@@ -12,13 +12,19 @@
   letter-spacing: 0.06px;
   text-align: left;
   text-decoration: none;
+  transition: color 0.2s ease-in;
 }
 
-.Link:hover {
-  color: var(--Link-color-hover);
+/* FIXME: Убрать !important */
+a.Link:hover {
+  color: var(--Link-color-hover) !important;
   cursor: pointer;
 }
 
-.Link:visited {
+a.Link:focus {
+  outline: none;
+  color: var(--Link-color-hover) !important;
+}
+a.Link:visited {
   color: var(--color);
 }

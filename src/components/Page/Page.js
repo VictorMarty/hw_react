@@ -1,7 +1,7 @@
-import { Helmet } from 'react-helmet'
 import cn from 'classnames'
-import { Header } from '../Header/Header'
-import { Footer } from '../Footer/Footer'
+import { Helmet } from 'react-helmet'
+import { Header } from './Header/Header'
+import { Footer } from './Footer/Footer'
 import './Page.css'
 export const Page = ({
   metatags,
@@ -9,8 +9,8 @@ export const Page = ({
   footerLinksData,
   footerAuthor,
   content,
+  classNameContent,
 }) => {
-  console.log(footerLinksData)
   return (
     <div className="Page">
       <Helmet>
@@ -24,7 +24,9 @@ export const Page = ({
           isSettings: headerProps.isSettingsStatus === true,
         })}
       />
-      <div className="Page-Content Page-container">{content}</div>
+      <div className={cn('Page-Content Page-container', classNameContent)}>
+        {content}
+      </div>
       <div className="Page-Footer">
         <Footer
           className="Page-container"

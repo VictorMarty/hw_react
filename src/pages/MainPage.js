@@ -106,17 +106,13 @@ export const MainPage = (props) => {
     { content: 'Русская версия' },
   ]
 
-  // const footerProps = {
-  //   linksData: linksData,
-  //   author: 'Victor Martynov',
-  // }
-
   return (
     <Page
       metatags={metatags}
       headerProps={headerProps}
       footerLinksData={linksData}
       footerAuthor="Victor Martynov"
+      classNameContent="MainPage-content"
       content={
         !props.isSettingsStatus ? (
           <div className="MainPage--nosettings">

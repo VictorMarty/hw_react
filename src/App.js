@@ -1,11 +1,10 @@
-// TODO: Сделать отдельный компонент "страница"
 import { MainPage } from './pages/MainPage'
 import { SettingsPage } from './pages/SettingsPage'
 import './App.css'
 import React, { useState } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-import { PopUp } from './components/PopUp/PopUp'
+import { Popup } from './components/PopUp/Popup'
 
 import { cardsData as TestingCardsData } from './assets/cardsData'
 
@@ -57,7 +56,7 @@ function App() {
       </Router>
       {!!popUpVisible && (
         <div className="AppPopUp-background">
-          <PopUp className="AppPopUp" onClose={closePopUp}></PopUp>
+          <Popup className="AppPopUp" onClose={closePopUp}></Popup>
         </div>
       )}
     </div>

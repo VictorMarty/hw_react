@@ -1,21 +1,19 @@
 import './SettingsPage.css'
-import { useState } from 'react'
-import { Header } from '../components/Header/Header'
+import { Page } from './../components/Page/Page'
 import { Form } from '../components/Form/Form'
 import {
   Input,
   TYPES as INPUT_TYPES,
   MASKS as INPUT_MASKS,
 } from '../components/Input/Input'
-import { Footer } from '../components/Footer/Footer'
 import {
   Button,
   SIZES as BUTTON_SIZES,
   VIEWS as BUTTON_VIEWS,
   PINS as BUTTON_PINS,
 } from '../components/Button/Button'
+import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import { Helmet } from 'react-helmet'
 import { useDispatch } from 'react-redux'
 import { setSettings } from '../reducers/settingsReducer'
 
@@ -30,9 +28,7 @@ export const SettingsPage = (props) => {
   const routeChange = (history) => (path) => () => {
     history.push(path)
   }
-
   const dispatch = useDispatch()
-
   const saveSettings = (event) => {
     if (gitHubRepositoryLocal === '' || buildCommandLocal === '') {
       return
@@ -128,30 +124,41 @@ export const SettingsPage = (props) => {
   })
 
   const settingsFormData = {
-    header: {
-      title: 'Settings',
-      description:
-        'Configure repository connection and synchronization settings.',
-    },
+    title: 'Settings',
+    description:
+      'Configure repository connection and synchronization settings.',
     inputs: inputs,
     buttons: buttons,
   }
 
+  const metatags = {
+    title: 'Settings Page',
+    description: 'description Setting Page',
+  }
+
+  const headerProps = {
+    title: 'School CI server',
+  }
+
+  const linksData = [
+    { content: 'Support' },
+    { content: 'Learning' },
+    { content: 'Русская версия' },
+  ]
+
   return (
-    <div className="SettingsPage">
-      <Helmet>
-        <title>Settings Page</title>
-        <meta name="description" content="Settings Page" />
-      </Helmet>
-      <div className="SettingsPage--header SettingsPage-container">
-        <Header title="School CI server" />
-      </div>
-      <div className="SettingsPage--main SettingsPage-container ">
-        <Form className="SettingsPage-container--small" {...settingsFormData} />
-      </div>
-      <div className=" SettingsPage--footer">
-        <Footer className="SettingsPage-container" author="Victor Martynov" />
-      </div>
-    </div>
+    <Page
+      className="SettingPage-content"
+      metatags={metatags}
+      headerProps={headerProps}
+      footerLinksData={linksData}
+      footerAuthor="Victor Martynov"
+      content={
+        <Form
+          className="SettingsPage-content-container"
+          {...settingsFormData}
+        />
+      }
+    />
   )
 }
