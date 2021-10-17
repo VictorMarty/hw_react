@@ -2,18 +2,21 @@ import { Link } from './../Link/Link'
 import './Footer.css'
 import cn from 'classnames'
 
-export const Footer = (props) => {
+export const Footer = ({ className, linksData, author }) => {
   return (
-    <footer className={cn('Footer', props.className)}>
+    <footer className={cn('Footer', className)}>
       <div className="Footer-container">
         <div className="Footer-menu">
-          <Link text="Support" />
-          <Link text="Learning" />
-          <Link text="Русская версия" />
+          {/* {linksData.map((linkData, index) => {
+            return <Link {...linkData} key={index} />
+          })} */}
+          <Link content="Support" />
+          <Link content="Learning" />
+          <Link content="Русская версия" />
         </div>
       </div>
       <div className="Footer-container">
-        <span className="Footer-yourname">© 2021 Victor Martynov</span>
+        <span className="Footer-yourname">© 2021 {author}</span>
       </div>
     </footer>
   )

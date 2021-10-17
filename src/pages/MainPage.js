@@ -1,8 +1,7 @@
 import cn from 'classnames'
 import './MainPage.css'
+import { Page } from './../components/Page/Page'
 import { Icon } from '../components/Icon/Icon'
-import { Header } from '../components/Header/Header'
-import { Footer } from '../components/Footer/Footer'
 import { Card, CARD_STATUS } from './../components/Card/Card'
 import {
   Button,
@@ -13,12 +12,13 @@ import {
 import mainIcon from './../assets/icons/tools.svg'
 import iconRunBuild from './../assets/icons/play.svg'
 import iconSettings from './../assets/icons/settings.svg'
-import { Helmet } from 'react-helmet'
 import { useHistory } from 'react-router-dom'
-
+import { moreData } from './../assets/cardsData'
 import { useSelector } from 'react-redux'
+import { useState } from 'react'
 
 export const MainPage = (props) => {
+  const [inProgress, setProgress] = useState(false)
   const history = useHistory()
   function toSetting() {
     history.push('/settings', { from: 'MainPage' })
@@ -65,6 +65,14 @@ export const MainPage = (props) => {
     }
   }
 
+  const getMoreCard = () => {
+    setProgress(true)
+    setTimeout(() => {
+      props.setCardsData(props.cardsData.concat(moreData))
+      setProgress(false)
+    }, 500)
+  }
+
   const cards = props.cardsData.map((cardData) => {
     switch (cardData.status) {
       case 'pending':
@@ -80,31 +88,37 @@ export const MainPage = (props) => {
         cardData.status = CARD_STATUS.ERROR
     }
     return (
-      <Card
-        key={cardData.index}
-        // FIXME: стили для карточки марджины
-
-        className="MainPageCard"
-        data={cardData}
-      />
+      <Card key={cardData.index} className="MainPageCard" data={cardData} />
     )
   })
 
+  const metatags = { title: 'main Pade', description: 'Main Page' }
+
+  const headerProps = {
+    title: title,
+    buttons: headerButtons(),
+    className: cn({ isSettings: isSettingsStatus === true }),
+  }
+
+  const linksData = [
+    { content: 'Support' },
+    { content: 'Learning' },
+    { content: 'Русская версия' },
+  ]
+
+  // const footerProps = {
+  //   linksData: linksData,
+  //   author: 'Victor Martynov',
+  // }
+
   return (
-    <div className="MainPage">
-      <Helmet>
-        <title>Main Page</title>
-        <meta name="description" content="Main Page" />
-      </Helmet>
-      <div className="MainPage--header MainPage-container">
-        <Header
-          title={title}
-          buttons={headerButtons()}
-          className={cn({ isSettings: isSettingsStatus === true })}
-        />
-      </div>
-      <div className="MainPage--main MainPage-container">
-        {!props.isSettingsStatus ? (
+    <Page
+      metatags={metatags}
+      headerProps={headerProps}
+      footerLinksData={linksData}
+      footerAuthor="Victor Martynov"
+      content={
+        !props.isSettingsStatus ? (
           <div className="MainPage--nosettings">
             <Icon icon={mainIcon} className="MainIcon" alt="" />
             <p className="mainDescription">
@@ -126,14 +140,12 @@ export const MainPage = (props) => {
               view={BUTTON_VIEWS.CONTROL}
               pin={BUTTON_PINS.ROUND_ROUND}
               children="Show more"
-              // onClick
+              disabled={inProgress}
+              onClick={getMoreCard}
             />
           </div>
-        )}
-      </div>
-      <div className="MainPage--footer">
-        <Footer className="MainPage-container" />
-      </div>
-    </div>
+        )
+      }
+    />
   )
 }

@@ -50,6 +50,7 @@ function App() {
               isSettingsStatus={isSettingsStatus}
               cardsData={cardsData}
               openPopup={openPopup}
+              setCardsData={setCardsData}
             />
           </Route>
         </Switch>

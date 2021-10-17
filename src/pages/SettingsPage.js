@@ -20,6 +20,7 @@ import { useDispatch } from 'react-redux'
 import { setSettings } from '../reducers/settingsReducer'
 
 export const SettingsPage = (props) => {
+  // TODO: Прокидывать изначальное состояние стора
   const [gitHubRepositoryLocal, setGitHubRepositoryLocal] = useState('')
   const [buildCommandLocal, setbuildCommandLocal] = useState('')
   const [mainBranchLocal, setmainBranchLocal] = useState('')
@@ -118,37 +119,12 @@ export const SettingsPage = (props) => {
     },
   ]
 
-  // FIXME: Передавать параметры деструктуризацией
   const inputs = inputsData.map((data, index) => {
-    return (
-      <Input
-        key={index}
-        value={data.value}
-        onChange={data.onChange}
-        labelText={data.labelText}
-        placeholder={data.placeholder}
-        required={data.required}
-        className={data.required}
-        secondaryText={data.secondaryText}
-        type={data.type}
-        mask={data.mask}
-      />
-    )
+    return <Input {...data} key={index} />
   })
 
   const buttons = buttonsData.map((data, index) => {
-    return (
-      <Button
-        key={index}
-        children={data.children}
-        onClick={data.onClick}
-        pin={data.pin}
-        view={data.view}
-        size={data.size}
-        className={data.className}
-        disabled={data.disabled}
-      />
-    )
+    return <Button {...data} key={index} />
   })
 
   const settingsFormData = {
@@ -171,16 +147,10 @@ export const SettingsPage = (props) => {
         <Header title="School CI server" />
       </div>
       <div className="SettingsPage--main SettingsPage-container ">
-        <Form
-          className="SettingsPage-container--small"
-          title={settingsFormData.header.title}
-          description={settingsFormData.header.description}
-          inputs={settingsFormData.inputs}
-          buttons={settingsFormData.buttons}
-        />
+        <Form className="SettingsPage-container--small" {...settingsFormData} />
       </div>
       <div className=" SettingsPage--footer">
-        <Footer className="SettingsPage-container" />
+        <Footer className="SettingsPage-container" author="Victor Martynov" />
       </div>
     </div>
   )

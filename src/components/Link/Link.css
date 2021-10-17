@@ -1,6 +1,6 @@
 :root {
   --Link-color: #7f8285;
-  --color-hover: #e00000;
+  --Link-color-hover: #e00000;
 }
 
 .Link {
@@ -11,10 +11,11 @@
   line-height: 18px;
   letter-spacing: 0.06px;
   text-align: left;
+  text-decoration: none;
 }
 
 .Link:hover {
-  color: var(--color-hover);
+  color: var(--Link-color-hover);
   cursor: pointer;
 }
 

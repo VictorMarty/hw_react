@@ -1,0 +1,33 @@
+:root {
+  --Page-Footer-Background: #f0f2f3;
+}
+
+.Page {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+.Page-container {
+  max-width: 884px;
+  width: 100%;
+  padding: 10px 20px;
+  display: flex;
+}
+.Page-Header {
+  flex: 0 1 auto;
+}
+
+.Page-Content {
+  display: flex;
+  flex: 1 0 auto;
+  justify-content: center;
+  align-items: center;
+}
+.Page-Footer {
+  width: 100%;
+  flex: 0 1 auto;
+  display: flex;
+  justify-content: center;
+  background-color: var(--Page-Footer-Background);
+}
