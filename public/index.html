@@ -5,6 +5,108 @@
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
+    <script src="metricSend.js"></script>
+    <script src="ua-parser.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+          const parser = new UAParser()
+          const counter = new Counter()
+          const parserResult = parser.getResult()
+          const Pbrowser = parserResult.browser.name
+          let Pplatform
+          let Pos
+          if (parserResult.device.type) {
+            Pplatform = parserResult.device.type
+          } else {
+            Pplatform = 'desktop'
+            Pos = parserResult.os.name
+          }
+
+          counter.init(
+            '5aba2568-44e7-4214-9aed-0b742f3a8932',
+            String(Math.random()).substr(2, 12),
+            'page'
+          )
+          // console.log(parserResult)
+          counter.setAdditionalParams({
+            env: 'development',
+            platform: Pplatform,
+            browser: Pbrowser,
+            os: Pos,
+          })
+          const userAgent = navigator.userAgent
+          console.log(userAgent)
+          const table = {}
+
+          const minus = (a, b) => {
+            return b - a
+          }
+          const set = (name, value) => {
+            // counter.send(name, value)
+            table[name] = value
+          }
+          try {
+            const {
+              navigationStart,
+              redirectStart,
+              redirectEnd,
+              fetchStart,
+              domainLookupStart,
+              domainLookupEnd,
+              requestStart,
+              responseStart,
+              responseEnd,
+              domInteractive,
+              domContentLoadedEventEnd,
+              domComplete,
+              loadEventEnd,
+            } = window.performance.timing
+            // Найдено https://github.com/artifact-project/perf-tools/blob/master/keeper/ext/navigation/index.ts#L27
+            // надеюсь, это не будет считаться за списывание :)
+
+            if (redirectStart) {
+              // От начала запроса браузера до начала редиректа
+              set('init', minus(navigationStart, redirectStart))
+              set('redirect', minus(redirectStart, redirectEnd))
+              // время на работу кэша браузера
+              set('app-cache', minus(redirectEnd, domainLookupStart))
+            } else if (fetchStart) {
+              set('init', minus(navigationStart, fetchStart))
+              set('app-cache', minus(fetchStart, domainLookupStart))
+            } else {
+              set('init', minus(navigationStart, domainLookupStart))
+            }
+            // поиск ip по домену
+            set('dns', minus(domainLookupStart, domainLookupEnd))
+            // время на установку соединение
+            set('tcp', minus(domainLookupEnd, requestStart))
+            // время от начала запроса до начала получения ответа
+            set('request', minus(requestStart, responseStart))
+            // время на получение ответа
+            set('response', minus(responseStart, responseEnd))
+            // время до инициализации DOM
+            set('interactive', minus(responseEnd, domInteractive))
+            // время загрузки контента
+            set(
+              'content-loaded',
+              minus(domInteractive, domContentLoadedEventEnd)
+            )
+            // время до рендера?
+            set('complete', minus(domContentLoadedEventEnd, domComplete))
+            //время от получения DOM
+            set('ready', minus(responseEnd, domComplete))
+            // время до загрузки всех событий
+            set('load', minus(domComplete, loadEventEnd))
+            // console.log(pageName)
+            console.table(table)
+          } catch (e) {
+            console.log(e)
+            set('error', 1, 2)
+          }
+        }, 2000)
+      })
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
