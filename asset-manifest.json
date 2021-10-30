@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/hw_react/static/css/main.92e12e75.chunk.css",
+    "main.js": "/hw_react/static/js/main.c096d10d.chunk.js",
+    "main.js.map": "/hw_react/static/js/main.c096d10d.chunk.js.map",
+    "runtime-main.js": "/hw_react/static/js/runtime-main.8fdce3ce.js",
+    "runtime-main.js.map": "/hw_react/static/js/runtime-main.8fdce3ce.js.map",
+    "static/js/2.65783bd9.chunk.js": "/hw_react/static/js/2.65783bd9.chunk.js",
+    "static/js/2.65783bd9.chunk.js.map": "/hw_react/static/js/2.65783bd9.chunk.js.map",
+    "index.html": "/hw_react/index.html",
+    "static/css/main.92e12e75.chunk.css.map": "/hw_react/static/css/main.92e12e75.chunk.css.map",
+    "static/js/2.65783bd9.chunk.js.LICENSE.txt": "/hw_react/static/js/2.65783bd9.chunk.js.LICENSE.txt",
+    "static/media/author.08ce57e7.svg": "/hw_react/static/media/author.08ce57e7.svg",
+    "static/media/calendar.721ff41d.svg": "/hw_react/static/media/calendar.721ff41d.svg",
+    "static/media/clearinput.e65e75c4.svg": "/hw_react/static/media/clearinput.e65e75c4.svg",
+    "static/media/commit.200d12d2.svg": "/hw_react/static/media/commit.200d12d2.svg",
+    "static/media/complete.f0967a4d.svg": "/hw_react/static/media/complete.f0967a4d.svg",
+    "static/media/error.e5c28c40.svg": "/hw_react/static/media/error.e5c28c40.svg",
+    "static/media/pending.9d0fda25.svg": "/hw_react/static/media/pending.9d0fda25.svg",
+    "static/media/play.608a4bfc.svg": "/hw_react/static/media/play.608a4bfc.svg",
+    "static/media/settings.263b136f.svg": "/hw_react/static/media/settings.263b136f.svg",
+    "static/media/timer.9a6ea995.svg": "/hw_react/static/media/timer.9a6ea995.svg",
+    "static/media/tools.138de78f.svg": "/hw_react/static/media/tools.138de78f.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8fdce3ce.js",
+    "static/js/2.65783bd9.chunk.js",
+    "static/css/main.92e12e75.chunk.css",
+    "static/js/main.c096d10d.chunk.js"
+  ]
+}
