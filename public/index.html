@@ -22,13 +22,11 @@
             Pplatform = 'desktop'
             Pos = parserResult.os.name
           }
-
           counter.init(
             '5aba2568-44e7-4214-9aed-0b742f3a8932',
             String(Math.random()).substr(2, 12),
             'page'
           )
-          // console.log(parserResult)
           counter.setAdditionalParams({
             env: 'development',
             platform: Pplatform,
@@ -36,14 +34,13 @@
             os: Pos,
           })
           const userAgent = navigator.userAgent
-          console.log(userAgent)
           const table = {}
 
           const minus = (a, b) => {
             return b - a
           }
           const set = (name, value) => {
-            // counter.send(name, value)
+            counter.send(name, value)
             table[name] = value
           }
           try {
@@ -98,8 +95,6 @@
             set('ready', minus(responseEnd, domComplete))
             // время до загрузки всех событий
             set('load', minus(domComplete, loadEventEnd))
-            // console.log(pageName)
-            console.table(table)
           } catch (e) {
             console.log(e)
             set('error', 1, 2)
